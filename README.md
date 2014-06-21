@@ -20,7 +20,8 @@ and add to your esformatter config file:
     "esformatter-quotes"
   ],
   "quotes": {
-    "type": "single"
+    "type": "single",
+    "avoidEscape": false
   }
 }
 ```
