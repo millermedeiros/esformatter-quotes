@@ -4,6 +4,28 @@
 single/double quotes normalization.
 
 
+## Usage
+
+install it:
+
+```sh
+npm install esformatter-quotes
+```
+
+and add to your esformatter config file:
+
+```json
+{
+  "plugins": [
+    "esformatter-quotes"
+  ],
+  "quotes": {
+    "type": "single"
+  }
+}
+```
+
+
 ## Options
 
   - **type:String**
