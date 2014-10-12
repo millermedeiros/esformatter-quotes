@@ -16,6 +16,7 @@ exports.setOptions = function(opts) {
     disabled = true;
     return;
   }
+  disabled = false;
   if (opts.type != null) {
     quoteValue = opts.type === 'single' ? SINGLE_QUOTE : DOUBLE_QUOTE;
     alternateQuote = opts.type !== 'single' ? SINGLE_QUOTE : DOUBLE_QUOTE;
