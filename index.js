@@ -45,7 +45,9 @@ exports.tokenBefore = function(token) {
     var alternateEscape = new RegExp('\\\\' + alternate, 'g');
     content = content.replace(alternateEscape, alternate);
 
-    var quoteEscape = new RegExp('([^\\\\])' + quote, 'g');
+    // If the first character is a quote, escape it (e.g. "'hello" -> '\'hello')
+    //   or if a character is an unescaped quote, escape it (e.g. "hello'" -> 'hello\'')
+    var quoteEscape = new RegExp('(^|[^\\\\])' + quote, 'g');
     content = content.replace(quoteEscape, '$1\\' + quote);
 
     token.value = quote + content + quote;

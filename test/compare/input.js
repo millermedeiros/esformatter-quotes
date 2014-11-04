@@ -19,6 +19,10 @@ var maecennas = 'ipsum \'dolor\' sit "amet"';
 
 var unnecessaryEscape = 'bar \'baz\' \"dolor\"';
 
+var leadingSingle = "'";
+var leadingDouble = '"';
+var unnecessaryEscapeSingle = '\'';
+
 
 // multiline strings ====
 
