@@ -21,7 +21,8 @@ and add to your esformatter config file:
   ],
   "quotes": {
     "type": "single",
-    "avoidEscape": false
+    "avoidEscape": false,
+    "normalizeObjectKeys": false
   }
 }
 ```
@@ -33,6 +34,8 @@ and add to your esformatter config file:
     - if code should use "single" or "double" quotes.
   - **avoidEscape:Boolean**
     - `true` if you want to avoid escaping quotes when possible.
+  - **normalizeObjectKeys:Boolean**
+    - `true` if you want to enforce quotes on object keys, too.
 
 ```js
 // register plugin
@@ -41,7 +44,8 @@ esformatter.register(require('esformatter-quotes'));
 var output = esformatter.format(str, {
   "quotes": {
     "type": "single",
-    "avoidEscape": false
+    "avoidEscape": false,
+    "normalizeObjectKeys": false
   }
 });
 ```
@@ -106,8 +110,62 @@ var lorem = "ipsum \"dolor\" sit 'amet'";
 var maecennas = "ipsum 'dolor' sit \"amet\"";
 ```
 
+## Examples for object key normalization
+
+Given this input program:
+
+```js
+var famousQuoteBy = {
+  'Princess Leia': 'I love you!',
+  'Han "Shot first" Solo': 'I know!',
+  Spock: 'Fascinating.',
+  "Dr. Emmett 'Doc' Brown": '1.21 gigawatts???'
+};
+
+```
+
+### {type: 'single', normalizeObjectKeys: true}
+```js
+var famousQuoteBy = {
+  'Princess Leia': 'I love you!',
+  'Han "Shot first" Solo': 'I know!',
+  'Spock': 'Fascinating.',
+  'Dr. Emmett \'Doc\' Brown': '1.21 gigawatts???'
+};
+
+```
+
+### {type: 'single', avoidEscape: true, normalizeObjectKeys: true}
+```js
+var famousQuoteBy = {
+  'Princess Leia': 'I love you!',
+  'Han "Shot first" Solo': 'I know!',
+  'Spock': 'Fascinating.',
+  "Dr. Emmett 'Doc' Brown": '1.21 gigawatts???'
+};
+
+```
+
+### {type: 'double', normalizeObjectKeys: true}
+```js
+var famousQuoteBy = {
+  "Princess Leia": "I love you!",
+  "Han \"Shot first\" Solo": "I know!",
+  "Spock": "Fascinating.",
+  "Dr. Emmett 'Doc' Brown": "1.21 gigawatts???"
+};
+```
+
+### {type: 'double', avoidEscape: true, normalizeObjectKeys: true}
+```js
+var famousQuoteBy = {
+  "Princess Leia": "I love you!",
+  'Han "Shot first" Solo': "I know!",
+  "Spock": "Fascinating.",
+  "Dr. Emmett 'Doc' Brown": "1.21 gigawatts???"
+};
+```
 
 ## License
 
 Released under the [MIT License](http://opensource.org/licenses/MIT).
-
