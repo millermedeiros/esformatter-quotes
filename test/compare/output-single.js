@@ -39,3 +39,11 @@ ipsum "dolor"';
 var multiAvoidDouble = 'dolor sit \
 ipsum \'dolor\'';
 
+// keys
+var object = {
+  someKey: 'someValue with "quotes"',
+  someOtherKey: 42,
+  aChildObject: {
+    withKeys: true
+  }
+};
