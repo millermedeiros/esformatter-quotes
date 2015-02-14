@@ -48,8 +48,12 @@ exports.tokenBefore = function(token) {
 
     // If the first character is a quote, escape it (e.g. "'hello" -> '\'hello')
     //   or if a character is an unescaped quote, escape it (e.g. "hello'" -> 'hello\'')
-    var quoteEscape = new RegExp('(^|[^\\\\])' + quote, 'g');
-    content = content.replace(quoteEscape, '$1\\' + quote);
+    // If we are an unescaped set of quotes, escape them (e.g. "hello'" -> 'hello\'', "hello''" -> 'hello\'\'')
+    // DEV: JavaScript starts the next match at the end of the current one, causing us to need a function or loop.
+    var quoteEscape = new RegExp('(^|[^\\\\])(' + quote + '+)', 'g');
+    content = content.replace(quoteEscape, function replaceQuotes (input, group1, group2, match) {
+      return group1 + new Array(group2.length + 1).join('\\' + quote);
+    });
 
     token.value = quote + content + quote;
   }

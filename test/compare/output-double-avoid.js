@@ -23,6 +23,8 @@ var leadingSingle = "'";
 var leadingDouble = '"';
 var unnecessaryEscapeSingle = "'";
 
+var successiveQuotes = " '' \"\"";
+
 
 // multiline strings ====
 
