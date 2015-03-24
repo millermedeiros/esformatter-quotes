@@ -1,6 +1,6 @@
 {
   "name": "esformatter-quotes",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "esformatter plugin: enforces coding style that string literals are delimited with single or double quotes.",
   "main": "index.js",
   "scripts": {
