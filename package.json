@@ -12,6 +12,7 @@
   },
   "keywords": [
     "esformatter",
+    "esformatter-plugin",
     "string",
     "quotes",
     "AST"
